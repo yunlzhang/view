@@ -1,50 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-/**
- * @param {number} a
- * @param {number} b
- * @param {number} c
- * @return {string}
- */
- var longestDiverseString = function(a, b, c) {
-    let queue = new PriorityQueue([],(x, y) => x[1] - y[1]);
-    let result = [];
-    queue.enqueue([0,a]);
-    queue.enqueue([1,b]);
-    queue.enqueue([2,c]);
-    let index = 0;
-    while(!queue.isEmpty()){
-        let cur = queue.dequeue();
-        let n = result.length;
-        if(n >= 2 && getCode(result[n - 1]) - getCode('a') === cur[0] && getCode(result[n - 2]) - getCode('a') === cur[0]){
-            if(queue.isEmpty()) break;
-            let next = queue.dequeue();
-            result.push(String.fromCharCode(next[0] + getCode('a')));
-            next[1]--;
-            if(next[1] !== 0) queue.enqueue(next);
-            queue.enqueue(cur);
-        }else{
-            result.push(String.fromCharCode(cur[0] + getCode('a')));
-            cur[1]--;
-            if(cur[1] !== 0) queue.enqueue(cur);
-        }
-        index++;
-    }
-    function getCode(str){
-        return str.charCodeAt();
-    }
-
-    return result.join('');
-};
-
-
 class PriorityQueue{
     constructor(arr = [], compare = (x, y) => x - y){
         this.compare = (x, y) => {
@@ -130,9 +83,3 @@ class PriorityQueue{
         }
     }
 }
-
-console.log(longestDiverseString(1,1,7));
-
-    </script>
-</body>
-</html>
