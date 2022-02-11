@@ -7,132 +7,22 @@
 </head>
 <body>
     <script>
-/**
- * @param {number} a
- * @param {number} b
- * @param {number} c
- * @return {string}
- */
- var longestDiverseString = function(a, b, c) {
-    let queue = new PriorityQueue([],(x, y) => x[1] - y[1]);
-    let result = [];
-    queue.enqueue([0,a]);
-    queue.enqueue([1,b]);
-    queue.enqueue([2,c]);
-    let index = 0;
-    while(!queue.isEmpty()){
-        let cur = queue.dequeue();
-        let n = result.length;
-        if(n >= 2 && getCode(result[n - 1]) - getCode('a') === cur[0] && getCode(result[n - 2]) - getCode('a') === cur[0]){
-            if(queue.isEmpty()) break;
-            let next = queue.dequeue();
-            result.push(String.fromCharCode(next[0] + getCode('a')));
-            next[1]--;
-            if(next[1] !== 0) queue.enqueue(next);
-            queue.enqueue(cur);
-        }else{
-            result.push(String.fromCharCode(cur[0] + getCode('a')));
-            cur[1]--;
-            if(cur[1] !== 0) queue.enqueue(cur);
+var longestCommonPrefix = function(strs) {
+    if(!strs[0]) return '';
+    if(strs.length === 1) return strs[0];
+    let result = '';
+    let str = strs[0];
+    for(let i = 0; i < str.length; i++){
+        for(let j = 1; j < strs.length; j++){
+            if(str[i] !== strs[j][i]) return result;
+            if(j === strs.length - 1){
+                result += str[i];
+            }
         }
-        index++;
     }
-    function getCode(str){
-        return str.charCodeAt();
-    }
-
-    return result.join('');
+    return result;
 };
-
-
-class PriorityQueue{
-    constructor(arr = [], compare = (x, y) => x - y){
-        this.compare = (x, y) => {
-            return compare(x, y) >= 0;
-        };
-        if (arr.length){
-            this.queue = []
-            this.build_queue(arr);
-        }else{
-            this.queue = [];
-        }
-    }
-
-    isEmpty(){
-        return this.queue.length === 0;
-    }
-
-    // 入队
-    enqueue(val){
-        this.queue.push(val);
-        // 上浮
-        this._up(this.queue.length - 1);
-    }
-
-    // 出队
-    dequeue(){
-        // 取树根元素
-        // 最后一个元素放树根，进行下沉
-        // log(n)下沉
-        let root = this.queue.shift();
-        if(!this.isEmpty()){
-            let last = this.queue.pop();
-            this.queue.unshift(last);
-            this._down(0);
-        }
-        
-        return root;
-    }
-
-    // 取队首的值
-    getFirst(){
-        return this.queue[0];
-    }
-
-    build_queue(arr){
-        let queue = this.queue;
-        queue.push(arr[0]);
-        for (let i = 1; i < arr.length; i++){
-            queue.unshift(arr[i]);
-            this._down(0);
-        }
-    }
-
-    // 对index号元素执行下沉操作
-    _down(index){
-        let {queue, compare} = this;
-        // 有右必有左
-        while(index * 2 + 1 < queue.length){
-            let l = queue[index * 2 + 1];
-            let r = queue[index * 2 + 2] || queue[index * 2 + 1]; // 有可能没有右儿子
-            let priority = compare(l , r) ? l : r;
-            let priorityIndex = compare(l, r) ? index * 2 + 1: index * 2 + 2;
-            if (compare(priority, queue[index])){
-                [queue[index], queue[priorityIndex]] = [queue[priorityIndex], queue[index]]
-                index = index * 2 + 1
-            }else{
-                return;
-            }
-        }
-    }
-
-    // 对index号元素执行上浮操作
-    _up(index){
-        let {queue, compare} = this;
-        while(index !== 0){
-            let p = index - 1 >> 1
-            if (compare(queue[index], queue[p])){
-                [queue[index], queue[p]] = [queue[p], queue[index]];
-                index = p;
-            } else {
-                return;
-            }
-        }
-    }
-}
-
-console.log(longestDiverseString(1,1,7));
-
+console.log(longestCommonPrefix(["flower","flow","flight"]))
     </script>
 </body>
 </html>
