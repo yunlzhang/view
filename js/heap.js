@@ -1,39 +1,25 @@
-/**
- * 
- * 堆是完全二叉树， 假设二叉树深度为h，除了第h层外，其他层节点树都达到最大个数，第h层所有节点集中在最左端
- * 
- */
+// /**
+//  * 
+//  * 堆是完全二叉树， 假设二叉树深度为h，除了第h层外，其他层节点树都达到最大个数，第h层所有节点集中在最左端
+//  * 
+//  */
 
-
-/**
- * 构建小根堆 从前往后，自下而上式构建
- */
-// function buildHeap(items,heapSize){
-//     while(heapSize < items.length - 1){
-//         heapSize++;
-//         heapify(items,heapSize);
-//     }
-// }
-
-// function heapify(items,i){
-//     while(i >> 1 > 0 && items[i] < items[i >> 1]){
-//         swap(items,i, i >> 1);
-//         i = i >> 1;
-//     }
-// }
-
-// function swap(items,i, j){
-//     [items[i],items[j]] = [items[j],items[i]];
-// }
+// 完全二叉树结点知识  
+//1) 度为1取值只能是0 和 1
+//2) n = n0 + n1 + n2
+//3) n0 = n2 + 1;
+// n为奇数 n1 = 0; n0 = n - n2  = (n + 1) / 2;
+// n为偶数 n1 = 1; n0 = n - n2 - 1 = n / 2;
 
 
 /**
  * 从后往前，自上而下式堆化建堆
  * 从最后一个非叶子节点开始
  */
-function buildHeap(items){
+function buildMaxHeap(items){
     let heapSize = items.length;
-    for(let i = heapSize >> 1; i >= 1; i--){
+    // 从非叶子结点开始处理
+    for(let i = (heapSize - 1) >> 1; i >= 0; i--){
         heapify(items,heapSize,i);
     }
 }
@@ -41,11 +27,13 @@ function buildHeap(items){
 function heapify(items,heapSize,i){
     while(true){
         let maxIndex = i;
-        if(2 * i <= heapSize && items[i] > items[2 * i]){
-            maxIndex = 2 * i;
+        let left = 2 * i + 1;
+        let right = 2 * i + 2
+        if(left <= heapSize && items[maxIndex] < items[left]){
+            maxIndex = left;
         }
-        if(2 * i + 1 <= heapSize && items[maxIndex] > items[2 * i + 1]){
-            maxIndex = 2 * i + 1;
+        if(right <= heapSize && items[maxIndex] < items[right]){
+            maxIndex = right;
         }
         if(maxIndex === i) break;
         swap(items,i,maxIndex);
@@ -57,3 +45,7 @@ function heapify(items,heapSize,i){
 function swap(items,i, j){
     [items[i],items[j]] = [items[j],items[i]];
 }
+
+const arr = [3,4,5,6,1,2,3,4,0,1,2,7,111]
+buildMaxHeap(arr);
+console.log(arr);
