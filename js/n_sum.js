@@ -1,4 +1,4 @@
-function numSum(nums, n, m) {
+function numSum(nums, n, target) {
     if (!nums.length || nums.length < n) return [];
     nums = nums.sort((a, b) => a - b);
     const result = [];
@@ -10,10 +10,10 @@ function numSum(nums, n, m) {
 
             while (start <= end) {
                 const temp = stack.reduce((acc, cur) => acc + cur);
-                if (temp + nums[start] === m) {
+                if (temp + nums[start] === target) {
                     result.push([...stack, nums[start]]);
                 }
-                if (start !== end && temp + nums[end] === m) {
+                if (start !== end && temp + nums[end] === target) {
                     result.push([...stack, nums[end]]);
                 }
                 start++;
