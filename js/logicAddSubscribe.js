@@ -8,7 +8,7 @@ function add(x,y){
     return sum;
 }
 
-
+// ~ 取反运算符  ~b = - (b + 1)
 function sub(a,b){
     return add(a, add(~b,1));
 }
