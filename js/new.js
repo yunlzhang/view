@@ -5,6 +5,13 @@
  * 4、函数没有返回对象，则返回创建的这个对象，否则返回对象
  */
 
+/**
+ * 创建一个空的简单 JavaScript 对象（即{}）；
+ * 为步骤 1 新创建的对象添加属性__proto__，将该属性链接至构造函数的原型对象 ；
+ * 将步骤 1 新创建的对象作为this的上下文 ；
+ * 如果该函数没有返回对象，则返回this。
+ */
+
 function objectFactory(){
     var obj = new Object();
     var Constructor = [].shift.call(arguments);
