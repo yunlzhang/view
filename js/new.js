@@ -21,3 +21,6 @@ function objectFactory(){
     // ret = null
     return typeof ret === 'object' ? ret || obj : obj;
 }
+
+
+// 构造函数若不需要传参数， new 调用可以不加括号  new Object 等价于new Object()
