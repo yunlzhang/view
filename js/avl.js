@@ -26,11 +26,13 @@ class AVL{
 
         if(node.value > v){
             node.left = _addChild(node.left, v);
-        }else if(node.value < v){
+        }else {
             node.right = this._addChild(node.right, v)
-        }else{
-            node.value = v;
         }
+        // if(node.value < v)·
+        // else{
+        //     node.value = v;
+        // }
 
         node.height = 1 + Math.max(this._getHeight(node.left), this.getHeight(node.right));
 
