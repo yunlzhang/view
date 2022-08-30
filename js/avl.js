@@ -38,12 +38,12 @@ class AVL{
 
         let factor = this._getBalanceFactor(node);
 
-        //需要右旋 跟节点的左树一定比右树高度高
+        //需要右旋 根节点的左树一定比右树高度高
         if(factor > 1 && this._getBalanceFactor(noe.left) >= 0){
             return this._rightRotate(node);
         }
 
-        //需要左旋，跟节点的左树一定比右树高度高
+        //需要左旋，根节点的右树一定比左树高度高
         if(factor < -1 && this._getBalanceFactor(node.right) <= 0){
             return this._leftRotate(node);
         }
@@ -78,8 +78,8 @@ class AVL{
         let newRoot = node.left;
         let moveNode = newRoot.right;
         newRoot.right = node;
-
         node.left = moveNode;
+
         node.height = 1 + Math.max(this._getHeight(node.left), this._getHeight(node.right));
         newRoot.height = 1 + Math.max(this._getHeight(newRoot.left), this._getHeight(newRoot.right));
         return newRoot;
@@ -90,6 +90,7 @@ class AVL{
         let moveNode = newRoot.left;
         newRoot.left = node;
         node.right = moveNode;
+        
         node.height = 1 + Math.max(this._getHeight(node.left), this._getHeight(node.right));
         newRoot.height = 1 + Math.max(this._getHeight(newRoot.left), this._getHeight(newRoot.right));
         return newRoot;
