@@ -16,6 +16,7 @@ function throttle(func, wait, options){
         var remaining = wait - (now - previous);
         context = this;
         args = arguments;
+        console.log(timeout);
         if(remaining <= 0){
             if(timeout){
                 clearTimeout(timeout);

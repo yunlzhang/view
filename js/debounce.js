@@ -4,6 +4,7 @@ function debounce(func, wait, immediate){
         var context = this;
         var args = arguments;
         if(timeout) clearTimeout(timeout);
+        // immediate参数为true，只会走这一个分支
         if(immediate){
             var callNow = !timeout;
             timeout = setTimeout(function(){
