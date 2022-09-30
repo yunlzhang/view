@@ -21,7 +21,6 @@ function kmp(s,t){
             j++;
         }
         if(j === tLen - 1){
-            console.log(i - j);
             return true;
         }
     }
