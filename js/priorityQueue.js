@@ -1,6 +1,6 @@
 class PriorityQueue{
     constructor(arr = [], compare = (x, y) => x - y){
-        // x-y >=0 大根堆
+        // x-y > 0 大根堆
         // x-y < 0 小根堆
         this.compare = (x, y) => {
             return compare(x, y) >= 0;
