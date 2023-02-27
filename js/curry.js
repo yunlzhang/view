@@ -1,5 +1,5 @@
 // 理解占位符
-
+var _ = '_';
 function curry(fn, args, holes) {
     length = fn.length;
 
@@ -29,10 +29,8 @@ function curry(fn, args, holes) {
             else if (arg === _) {
                 _args.push(arg);
                 _holes.push(argsLen + i);
-            }
-            // 处理类似 fn(_, 2)(1) 这种情况
-            else if (holesLen) {
-                // fn(_, 2)(_, 3)
+            }else if (holesLen) {
+                // 处理类似 fn(_, 2) 这种情况
                 if (index >= holesLen) {
                     _args.push(arg);
                 }
@@ -57,7 +55,7 @@ function curry(fn, args, holes) {
 }
 
 
-var _ = '_';
+
 
 var fn = curry(function(a, b, c, d, e) {
     console.log([a, b, c, d, e]);
