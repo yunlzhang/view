@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 500px;
+            height: 500px;
+            margin:0 auto;
+            background: #ff0000;
+        }
+        .inner{
+            padding: 200px;
+            background: #0f0;
+            margin: 0 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        width: 100%; padding border margin 会导致元素超出父元素
+        width: auto; 默认情况，不会超出父元素
+
+
+     -->
+    <div class="wrap">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>
