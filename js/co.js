@@ -56,7 +56,7 @@ function* test(){
     var a = yield Promise.resolve(123);
     var b = yield Promise.resolve(456);
     var c = yield Promise.resolve(789);
-    // return [a, b, c];
+    return [a, b, c];
 }
 
 run(test)
