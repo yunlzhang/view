@@ -36,3 +36,10 @@
 > 特例： (5.215).toFixed(2)
 > javascript 精度问题IEEE754 双精度计数
 > (5.215).toPrrecision(17) === '5.2149999999999999'
+
+
+### Object.keys 规则
+
+> * 合法的数组索引按升序
+> * 字符串类型按升序
+> * 补充： Object.getOwnPropertySymbols  Symbol类型按升序排列
