@@ -5,12 +5,14 @@
 //  */
 
 // 完全二叉树结点知识  
-// 度 ： 二叉树的子节点的数量
+// 度 ： 二叉树的子节点的数量， 取值0、1、2
 //1) 度为1取值只能是0 和 1
 //2) n = n0 + n1 + n2
 //3) n0 = n2 + 1;
 // n为奇数 n1 = 0; n0 = n - n2  = (n + 1) / 2;
 // n为偶数 n1 = 1; n0 = n - n2 - 1 = n / 2;
+
+
 
 
 /**
@@ -20,7 +22,7 @@
 function buildMaxHeap(items){
     let heapSize = items.length;
     // 从非叶子结点开始处理
-    for(let i = (heapSize - 1) >> 1; i >= 0; i--){
+    for(let i = heapSize >> 1; i >= 0; i--){
         heapify(items,heapSize,i);
     }
 }
@@ -44,6 +46,9 @@ function heapify(items,heapSize,i){
 
 
 function swap(items,i, j){
+    // items[i] = items[i] ^ items[j];
+    // items[j] = items[i] ^ items[j];
+    // items[i] = items[i] ^ items[j];
     [items[i],items[j]] = [items[j],items[i]];
 }
 

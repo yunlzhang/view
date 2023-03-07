@@ -30,7 +30,10 @@ function heapify(arr,i){
 }
 
 function swap(arr,i,j){
-    [arr[i],arr[j]] = [arr[j],arr[i]];
+    arr[i] = arr[i] ^ arr[j];
+    arr[j] = arr[i] ^ arr[j];
+    arr[i] = arr[i] ^ arr[j];
+    // [arr[i],arr[j]] = [arr[j],arr[i]];
 }
 
 function heapSort(arr){
@@ -42,3 +45,5 @@ function heapSort(arr){
     }
     return arr;
 }
+
+console.log(heapSort([3,1,2,6,19,20,44]))
