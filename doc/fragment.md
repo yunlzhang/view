@@ -42,4 +42,4 @@
 
 > * 合法的数组索引按升序
 > * 字符串类型按属性创建时间升序
-> * 补充： Object.getOwnPropertySymbols  Symbol 按属性创建时间以升序序
+> * 补充： Object.getOwnPropertySymbols  Symbol 按属性创建时间以升序
