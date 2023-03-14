@@ -248,7 +248,7 @@ class BST {
      *   . 找到右子树最小节点，用最小节点替换当前节点，然后递归删除最小节点
      */
     delete(v){
-        this.root = this._deleteMin(this.root, v);
+        this.root = this._delete(this.root, v);
     }
 
     _delete(node,v){
