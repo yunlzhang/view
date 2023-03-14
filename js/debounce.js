@@ -16,6 +16,7 @@ function debounce(func, wait, immediate){
                 func.apply(context,args);
             },wait);
         }
+        return result;
     }
 
     debounced.cancel = function(){
