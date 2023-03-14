@@ -36,9 +36,8 @@ class LinkList {
         return this.addNode(v,this.size);
     }
 
-    removeNode(index,isLast){
-        this.checkIndex();
-        index = isLast ? index - 1 : index;
+    removeNode(index){
+        this.checkIndex(index);
         let prev = this.find(this.dummyNode,index,0);
         let node = prev.next;
         prev.next = node.next;
@@ -52,7 +51,7 @@ class LinkList {
     }
 
     removeLastNode(){
-        return this.removeNode(this.size,true);
+        return this.removeNode(this.size - 1);
     }
 
     checkIndex(){
