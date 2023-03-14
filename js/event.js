@@ -14,7 +14,7 @@ const eventEmitter = {
         // 先绑定，调用后删除
         let _this = this;
         function on () {
-            _this.off(event, on);
+            _this.off(event, on); // on 或 fn 都可以
             fn.apply(_this, arguments);
         }
         on.fn = fn;
@@ -62,4 +62,12 @@ const eventEmitter = {
     }
 };
 
-export default eventEmitter;
+
+eventEmitter.once('type', () => {
+    console.log('hahahah');
+})
+
+eventEmitter.emit('type');
+
+
+// export default eventEmitter;
