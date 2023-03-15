@@ -19,6 +19,7 @@ function partition(arr,left,right){
             index++;
         }
     }
+    // important
     swap(arr,pivot,index - 1);
     return index - 1;
 }
