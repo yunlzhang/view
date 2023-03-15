@@ -19,3 +19,5 @@ function shellSort(arr){
 
     return arr;
 }
+
+console.log(shellSort([4,5,2,1,3,44]))
