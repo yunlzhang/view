@@ -54,7 +54,7 @@ class PriorityQueue{
     // 对index号元素执行下沉操作
     _down(index){
         let {queue, compare} = this;
-        // 有右必有左
+        // 有右必有左  且只有非叶子结点参与
         while(index * 2 + 1 < queue.length){
             let l = queue[index * 2 + 1];
             let r = queue[index * 2 + 2] || queue[index * 2 + 1]; // 有可能没有右儿子
