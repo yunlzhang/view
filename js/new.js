@@ -15,8 +15,8 @@
 function objectFactory(){
     var obj = new Object();
     var Constructor = [].shift.call(arguments);
-    obj.__proto__ = Constructor.prototype;
-
+    // obj.__proto__ = Constructor.prototype; 
+    Object.setPrototypeOf(obj, Constructor.prototype);
     var ret = Constructor.apply(obj,arguments);
     // ret = null
     return typeof ret === 'object' ? ret || obj : obj;
