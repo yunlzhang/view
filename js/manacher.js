@@ -29,4 +29,8 @@ function manacher(str){
     return max - 1;
 }
 
+
+// 可视化网站
+// http://manacher-viz.s3-website-us-east-1.amazonaws.com/#/ 
+
 console.log(manacher('abcdcba'));
